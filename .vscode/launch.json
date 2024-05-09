@@ -1,0 +1,62 @@
+ {
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Debug Current File Linux",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+            "args": ["<", "input.txt"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1,
+            },
+            
+            
+            "preLaunchTask": "C/C++: g++ build active file (Linux)",
+        },
+
+        {
+            "name": "Debug Current File Windows(MSVC)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
+            // "args": ["<", "input.txt"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal",
+
+                        
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1,
+            },
+            "requireExactSource": true,
+
+            "preLaunchTask": "C/C++: MSVC build active file",
+        },
+
+    ],
+    "compounds": []
+ }
