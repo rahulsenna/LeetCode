@@ -34,10 +34,10 @@ public:
     int dfs(TreeNode *root){
         if (!root) return -1;
 
-        int left = dfs(root->left);
-        int right = dfs(root->right);
-        res = max(res, left+right+2); // Diameter
+        int left = dfs(root->left); // height of left subtree
+        int right = dfs(root->right); // height of right subtree
 
+        res = max(res, left+right+2); // Diameter
         return max(left,right)+1; // Height
 
     }
