@@ -3,6 +3,9 @@ using namespace std;
 
 // 102. Binary Tree Level Order Traversal
 
+// ----- Approach -----
+// * BFS
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
