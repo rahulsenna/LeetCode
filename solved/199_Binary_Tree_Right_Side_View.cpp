@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 199. Binary Tree Right Side View
+
+// ----- Approach -----
+// * BFS
+// * Add last node of current level to the Result <vector>
 
  struct TreeNode {
      int val;
@@ -21,12 +26,13 @@ public:
         while(!q.empty()) {
             int size = q.size();
             for (int i=0;i<size;++i) {
-                if (i==size-1)
-                    res.push_back(q.front()->val);
-
-                if (q.front()->left) q.push_back(q.front()->left);
-                if (q.front()->right) q.push_back(q.front()->right);
+                auto node = q.front();
                 q.pop_front();
+                if (i+1==size)                  // Last node of this level
+                    res.push_back(node->val);
+
+                if (node->left) q.push_back(node->left);
+                if (node->right) q.push_back(node->right);
             }
 
         }
