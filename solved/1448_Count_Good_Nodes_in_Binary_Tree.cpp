@@ -40,6 +40,5 @@ public:
 int main()
 {
     cout << "Hello, Sailor\n";
-// bittukainsuranceA@1
 	return(0);
 }
