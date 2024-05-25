@@ -3,3 +3,4 @@ bin/*
 bits/*
 .vs/*
 *.sublime*
+test.txt
