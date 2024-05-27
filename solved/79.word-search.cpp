@@ -74,8 +74,44 @@ public:
     int COLS = board[0].size();
     int idx = 0;
 
-    unordered_map<int, bool> visited;
+    // ----------------- Optimizations ----------------------------
 
+    // Quick check: If the length of the word exceeds the total number of cells on the board, it can't exist
+    if (word.size() > ROWS * COLS)
+        return false;
+
+    vector<char> char_arr(word.begin(), word.end());
+    vector<int> counts(256, 0); // Array to store counts of each character
+    
+    // Count the occurrence of each character on the board
+    for (int r = 0; r < ROWS; r++)
+    {
+        for (int c = 0; c < COLS; c++)
+            counts[board[r][c]]++;
+    }
+    
+    // Adjust the order of characters in the wordChar array based on their frequency counts to optimize search
+    int len = char_arr.size();
+    for (int i = 0; i < len / 2; i++)
+    {
+        if (counts[char_arr[i]] > counts[char_arr[len - 1 - i]])
+        {
+            for (int j = 0; j < len / 2; j++)
+                swap(char_arr[j], char_arr[len - 1 - j]);
+            
+            break;
+        }
+    }
+    
+    // Decrease counts of characters in the word from the board
+    for (char c : char_arr)
+    {
+        if (--counts[c] < 0)
+            return false; // If there are more occurrences of a character in the word than on the board, return false
+    }
+    // ----------------- Optimizations END ----------------------------
+
+    unordered_map<int, bool> visited;
     bool res = false;
 
     function<void(int, int)> backtrack = [&](int row, int col)
@@ -92,7 +128,7 @@ public:
         if (visited[1000 * row + col])
             return;
 
-        if (board[row][col] == word[idx])
+        if (board[row][col] == char_arr[idx])
         {
             idx++;
             visited[1000 * row + col] = true;
