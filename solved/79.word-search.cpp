@@ -141,11 +141,8 @@ public:
         backtrack(row, col - 1);
         backtrack(row - 1, col);
         
-
-        if (idx > 0)
-            idx--;
-        if (!visited.empty())
-            visited[1000 * row + col] = false;
+        idx--;
+        visited[1000 * row + col] = false;
     };
 
     for (int r = 0; r < ROWS; r++)
