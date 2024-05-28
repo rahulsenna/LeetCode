@@ -46,6 +46,7 @@
                 "/nologo",
                 "/Yubits/stdc++.h",
                 "/std:c++latest",
+                "/JMC",
                 "/fsanitize=address",
                 "/diagnostics:caret",
                 "/Fe${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
