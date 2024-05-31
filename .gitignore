@@ -4,3 +4,6 @@ bits/*
 .vs/*
 *.sublime*
 test.txt
+input.txt
+output.txt
+.cph
