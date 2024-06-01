@@ -75,6 +75,18 @@ class Solution {
 public:
     ListNode* removeNodes(ListNode* head) {
 
+        if (!head) 
+        	return 0;
+        
+        head->next = removeNodes(head->next);
+        if (head->next && head->val < head->next->val)
+            return head->next;
+        else
+            return head;
+        
+
+
+/*
         // MONOTONIC STACK METHOD
         vector<ListNode*> stack;
         while(head)
@@ -91,6 +103,7 @@ public:
         	 stack[i]->next = stack[i+1];
         
         return stack.front();
+         */
     }
 };
 // @lc code=end
