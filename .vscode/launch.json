@@ -39,7 +39,7 @@
             "name": "Debug Current File Windows(MSVC)",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}/bin/CodeForces.exe",
             // "args": ["<", "input.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

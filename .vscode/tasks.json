@@ -49,7 +49,7 @@
                 "/JMC",
                 "/fsanitize=address",
                 "/diagnostics:caret",
-                "/Fe${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
+                "/Fe${workspaceFolder}\\bin\\CodeForces.exe",
                 "${file}",
                 "bits/stdc++.obj",
                 // "/link",
