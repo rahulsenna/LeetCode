@@ -71,7 +71,7 @@ public:
             n -= '0';
         vector<string> res;
         vector<char> comb;
-        function<void(int,int)> rec = [&](int s_dig, int s_char)
+        function<void(int)> rec = [&](int s_dig)
         {
             if (comb.size()==digits.length())
             {
@@ -82,11 +82,11 @@ public:
             for (int j = 0; j < chars.length(); ++j)
             {
                 comb.push_back(chars[j]);
-                rec(s_dig+1, 1);
+                rec(s_dig+1);
                 comb.pop_back();
             }
         };
-        rec(0,0);
+        rec(0);
         return res;
     };
 };
