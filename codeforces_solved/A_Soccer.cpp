@@ -51,12 +51,13 @@ int main()
 	freopen("error.txt", "w", stderr);
 #endif
 
-    ll t;
+    ll t, x1, y1, x2, y2;
     cin >> t;
 
     while(t--)
     {
-        
+        cin >> x1 >> y1 >> x2 >> y2;
+        cout << (x1 > y1 == x2 > y2 ? "YES\n" : "NO\n");
     }
  
     return 0;
