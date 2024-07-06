@@ -56,6 +56,37 @@
 
             "preLaunchTask": "C/C++: MSVC build active file",
         },
+        {
+            "name": "Debug msys2",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/CodeForces.exe",
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1,
+            },
+            
+            
+            "preLaunchTask": "g++.exe msys2",
+        }
 
     ],
     "compounds": []

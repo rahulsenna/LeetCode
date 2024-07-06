@@ -98,8 +98,8 @@
     "cph.general.defaultLanguage": "cpp",
     "cph.general.defaultLanguageTemplateFileLocation": "C:\\Users\\agentofchaos\\Desktop\\LeetCode\\template.cpp",
     "cph.language.cpp.SubmissionCompiler": "GNU G++20 13.2 (64 bit, winlibs)",
-    "cph.language.cpp.Command": "cl",
+    "cph.language.cpp.Command": "g++",
     // "cph.language.cpp.Args": "/DONLINE_JUDGE /Z7 /EHsc /nologo  C:\\Users\\agentofchaos\\Desktop\\LeetCode\\bits\\stdc++.obj /std:c++latest /JMC /fsanitize=address /diagnostics:caret",
     // "cph.language.cpp.Args": "/DONLINE_JUDGE /Z7 /EHsc /nologo /Yubits/stdc++.h bits/stdc++.obj /std:c++latest /JMC /fsanitize=address /diagnostics:caret",
-    "cph.language.cpp.Args": "/DONLINE_JUDGE /std:c++latest",
+    "cph.language.cpp.Args": "-DONLINE_JUDGE -std=c++23 -g",
 }
