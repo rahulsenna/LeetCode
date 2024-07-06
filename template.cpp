@@ -8,19 +8,19 @@ using namespace std;
 #define PI 3.141592653589793238462
 #define set_bits __builtin_popcountll
 
-typedef long long ll;
-typedef unsigned long long ull;
-typedef long double lld;
+typedef int64_t s64;
+typedef uint64_t u64;
+typedef long double r64;
 
 #ifndef ONLINE_JUDGE
 #define debug(...) cerr << __LINE__ << ": "; _setupvar(#__VA_ARGS__); _debug(__VA_ARGS__);
-void _print(ll t) {cerr << t;}
+void _print(s64 t) {cerr << t;}
 void _print(int t) {cerr << t;}
 void _print(string t) {cerr << t;}
 void _print(char t) {cerr << t;}
-void _print(lld t) {cerr << t;}
+void _print(r64 t) {cerr << t;}
 void _print(double t) {cerr << t;}
-void _print(ull t) {cerr << t;}
+void _print(u64 t) {cerr << t;}
 
 template <class T, class V> void _print(pair <T, V> p);
 template <class T> void _print(vector <T> v);
@@ -51,7 +51,7 @@ int main()
 	freopen("error.txt", "w", stderr);
 #endif
 
-    ll t;
+    s64 t;
     cin >> t;
 
     while(t--)
