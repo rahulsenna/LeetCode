@@ -70,18 +70,17 @@ int main()
                     if (first)
                     {
                         first = false;
-                        r_idx = c+1;
+                        c_idx = c+1;
                     }
                     if (c < min_c)
                     {
                         min_c = c;
-                        c_idx = r+1;
+                        r_idx = r+1;
                     }
-                
                 }
             }
         }
-        cout << c_idx << " " << r_idx << '\n';
+        cout << r_idx << " " << c_idx << '\n';
 
     }
  
