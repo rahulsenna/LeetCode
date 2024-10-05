@@ -12,6 +12,13 @@ typedef int64_t s64;
 typedef uint64_t u64;
 typedef long double r64;
 
+inline void setup() {
+    fastio;
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin), freopen("output.txt", "w", stdout), freopen("error.txt", "w", stderr);
+#endif
+}
+
 #ifndef ONLINE_JUDGE
 #include "debug_template.h"
 #else
@@ -20,12 +27,7 @@ typedef long double r64;
 
 int main()
 {
-    fastio;
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-	freopen("error.txt", "w", stderr);
-#endif
+    setup();
 
     s64 t;
     cin >> t;
