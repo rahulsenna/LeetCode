@@ -46,7 +46,7 @@ int main()
 
             if (c=='*' and prev == '*')
                 break;
-                prev = c;
+            prev = c;
         }
         std::cout << res << '\n';
     }
