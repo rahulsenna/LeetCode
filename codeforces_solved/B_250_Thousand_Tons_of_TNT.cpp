@@ -35,39 +35,35 @@ int main()
     while(t--)
     {
         cin >> n;
-        vector<s64> trucks(n);
-        for (auto &e: trucks)        
-            cin >> e;
+        vector<s64> boxes(n);
+        s64 max_b = LLONG_MIN, min_b = LLONG_MAX;
 
-        vector<s64> trucks_t = trucks;
-        ranges::sort(trucks_t);
+        for (auto& b : boxes)
+        {
+            cin >> b;
+            max_b = max(max_b, b);
+            min_b = min(min_b, b);            
+        }
 
-        s64 max_diff = trucks_t.back() - trucks_t.front();
-
-        vector<int64_t> prefix_sum(trucks.size() + 1, 0);
- 
-        for (int i = 0; i < trucks.size(); i++)
-            prefix_sum[i + 1] = prefix_sum[i] + trucks[i];
-
-        int N = trucks.size()/2;
+        s64 max_diff = max_b- min_b;
+        int N = boxes.size()/2;
 
         for (int k = 2; k <= N; ++k)         
         {
-            while (trucks.size() % k != 0)
+            while (boxes.size() % k != 0)
                 k++;
-            
-            vector<s64> temp;
-            for (int x = 0; x < trucks.size(); x += k)
+
+            max_b = LLONG_MIN, min_b = LLONG_MAX;
+            for (int x = 0; x < boxes.size(); x += k)
             {
                 s64 sum = 0;
-                for (int y = x; y < (x + k) and y < trucks.size(); ++y)
-                    sum += trucks[y];
-                
-                temp.push_back(sum);
+                for (int y = x; y < (x + k) and y < boxes.size(); ++y)
+                    sum += boxes[y];
+            
+                max_b = max(max_b, sum);
+                min_b = min (min_b, sum);
             }
-
-            ranges::sort(temp);
-            auto diff = temp.back()-temp.front();
+            auto diff = max_b - min_b;
             max_diff = max(max_diff, diff);
         }
         cout << max_diff << '\n';
