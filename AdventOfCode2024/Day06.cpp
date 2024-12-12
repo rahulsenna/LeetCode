@@ -15,7 +15,7 @@ typedef long double r64;
 inline void setup() {
     fastio;
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin),/*  freopen("output.txt", "w", stdout), */ freopen("error.txt", "w", stderr);
+    freopen("Day06.txt", "r", stdin),/*  freopen("output.txt", "w", stdout), */ freopen("error.txt", "w", stderr);
 #endif
 }
 
@@ -24,6 +24,36 @@ inline void setup() {
 #else
 #define debug(...)
 #endif
+
+set<pair<int,int>> gaurd_been(vector<string> &grid, int curr_x, int curr_y)
+{
+    int rows = grid.size(), cols = grid[0].size();
+    auto outside = [&](int x, int y) {return (x < 0 or y < 0 or y >= rows or x >= cols);};
+
+    pair<int, int> DIRS[4] = { { 0,-1},{ 1, 0},{ 0, 1},{-1, 0} };
+    int dir_idx = 0;
+    set<pair<int,int>> gaurd_seen;    
+    gaurd_seen.insert({curr_x,curr_y});
+
+    while (1)
+    {
+        auto [dir_x, dir_y] = DIRS[dir_idx];
+
+        while (1)
+        {
+            if (outside(curr_x + dir_x, curr_y + dir_y))
+                return gaurd_seen;
+            if (grid[curr_y + dir_y][curr_x + dir_x] == '#')
+                break;
+            
+            curr_x += dir_x;
+            curr_y += dir_y;
+            gaurd_seen.insert({ curr_x, curr_y });
+        }
+        dir_idx = (dir_idx + 1) % 4;
+    }
+    return {};
+}
 
 void part_one()
 {
@@ -41,36 +71,8 @@ void part_one()
         grid.push_back(line);
         y++;
     }
-
-
-    int rows = grid.size(), cols = grid[0].size();
-    auto outside = [&](int x, int y) {return (x < 0 or y < 0 or y >= rows or x >= cols);};
-
-    pair<int, int> DIRS[4] = { { 0,-1},{ 1, 0},{ 0, 1},{-1, 0} };
-    int dir_idx = 0;
-    set<pair<int,int>> gaurd_seen;    
-    gaurd_seen.insert({curr_x,curr_y});
-
-    while (1)
-    {
-        auto [dir_x, dir_y] = DIRS[dir_idx];
-
-        while (1)
-        {
-            if (outside(curr_x + dir_x, curr_y + dir_y))
-                goto result;
-            if (grid[curr_y + dir_y][curr_x + dir_x] == '#')
-                break;
-            
-            curr_x += dir_x;
-            curr_y += dir_y;
-            gaurd_seen.insert({ curr_x, curr_y });
-        }
-        dir_idx = (dir_idx + 1) % 4;
-    }
-
-    result:
-    std::cout << "res: " << gaurd_seen.size() << '\n';
+    int res = gaurd_been(grid, curr_x, curr_y).size();
+    std::cout << "res: " << res << '\n';
 }
 
 
@@ -126,24 +128,18 @@ void part_two()
         }
     };
     int res = 0;
-    for (int r = 0; r < rows; ++r)
+
+    set<pair<int,int>> gaurds_positions = gaurd_been(grid, start_x, start_y);
+    gaurds_positions.erase(make_pair(start_x, start_y));
+    for (auto [x,y]: gaurds_positions)
     {
-        for (int c = 0; c < rows; ++c)
-        {
-            if (grid[r][c] == '.')
-            {
-                grid[r][c] = '#';
-
-                if (in_loop())
-                {
-                    res++;
-                }
-                grid[r][c] = '.';
-            }
-        }
-    	 
+    	grid[y][x] = '#';
+        if (in_loop())
+            res++;
+                
+        grid[y][x] = '.';
     }
-
+    
     std::cout << "res: " << res << '\n';
 }
 
@@ -151,6 +147,7 @@ int main()
 {
     setup();
 
+    // part_one();
     part_two();
  
     return 0;
