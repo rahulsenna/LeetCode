@@ -15,7 +15,7 @@ typedef long double r64;
 inline void setup() {
     fastio;
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin), freopen("output.txt", "w", stdout), freopen("error.txt", "w", stderr);
+    freopen("Day05.txt", "r", stdin), freopen("output.txt", "w", stdout), freopen("error.txt", "w", stderr);
 #endif
 }
 
@@ -31,12 +31,10 @@ void part_one()
     char _;
     string line;
     std::unordered_map<int, vector<int>> edges;
-    while(1)
+    
+    while(getline(cin, line) && not line.empty())
     {
-        getline(cin, line);
-        if (line == "") break;
-        stringstream ss(line);
-        
+        stringstream ss(line);    
         ss >> A >> _ >> B;
         edges[A].push_back(B);
     }
@@ -82,12 +80,9 @@ void part_two()
     char _;
     string line;
     std::unordered_map<int, vector<int>> edges;
-    while(1)
+    while(getline(cin, line) && not line.empty())
     {
-        getline(cin, line);
-        if (line == "") break;
-        stringstream ss(line);
-        
+        stringstream ss(line);   
         ss >> A >> _ >> B;
         edges[A].push_back(B);
     }
@@ -96,8 +91,6 @@ void part_two()
     int res = 0;
     while (getline(cin, line))
     {
-        // vector<int> nums = std::views::split(line, ',') | std::ranges::to<vector<int>>();
-
         std::vector<int> nums;
         std::vector<int> sorted;
         string token;
@@ -106,6 +99,7 @@ void part_two()
         {
             int x = stoi(token);
             nums.push_back(x);
+            
             auto it = sorted.begin();
 
             while (it != sorted.end())
@@ -122,7 +116,7 @@ void part_two()
         
 
     }
-    std::cout << "res: " << res << '\n';
+    std::cout << "res: " << res << '\n'; // 4716
 }
 int main()
 {
