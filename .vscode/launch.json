@@ -86,7 +86,28 @@
             
             
             "preLaunchTask": "g++.exe msys2",
-        }
+        },
+        {
+            "name": "Mac Debug Current file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1,
+            },
+            
+            
+            "preLaunchTask": "C/C++: clang++ build active file",
+        },
 
     ],
     "compounds": []
