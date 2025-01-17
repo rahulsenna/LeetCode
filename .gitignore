@@ -6,6 +6,9 @@ bits/*
 test.txt
 input.txt
 output.txt
+expected.txt
 .cph
 error.txt
 unsolved*
+.tmp*
+.DS*

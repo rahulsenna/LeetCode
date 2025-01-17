@@ -19,7 +19,22 @@ template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_pr
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 void _debug() {cerr << '\n';}
 vector<string> VARS;int VAR_IDX = 0;
-void _setupvar(string v) {VARS = std::views::split(v, ',') | ranges::to<vector<string>>();VAR_IDX = 0;}
-
+// void _setupvar(string v) {VARS = std::views::split(v, ',') | ranges::to<vector<string>>();VAR_IDX = 0;}
+void _setupvar(const std::string& v) {
+    std::vector<std::string> tokens;
+    std::istringstream stream(v);
+    std::string token;
+    
+    while (std::getline(stream, token, ','))
+    {
+        // Trim whitespace
+        token.erase(0, token.find_first_not_of(" "));
+        token.erase(token.find_last_not_of(" ") + 1);
+        tokens.push_back(token);
+    }
+    
+    VARS = std::move(tokens);
+    VAR_IDX = 0;
+}
 template<typename T, typename... Args>
 void _debug(const T& first, const Args&... args) { cerr << VARS[VAR_IDX++] << ": "; _print(first); cerr << ", "; _debug(args...);}

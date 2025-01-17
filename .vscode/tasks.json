@@ -107,12 +107,16 @@
         {
             "type": "cppbuild",
             "label": "C/C++: clang++ build active file",
-            "command": "/usr/bin/clang++",
+            "command": "clang++",
+            // "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-14",
             "args": [
                 "-std=c++23",
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
+                "-include-pch",
+                "${workspaceFolder}/bits/stdc++.h.pch",
                 "-g",
+                "-fsanitize=address",
                 // "-o3",
                 "${file}",
                 "-o",
